@@ -3,7 +3,6 @@ const models  = require('../models');
 
 // Session Check
 router.use(function (req, res, next) {
-  // console.log(req.session.user);
   if(req.session.user) {
     next();
   } else {
@@ -12,11 +11,14 @@ router.use(function (req, res, next) {
 })
 
 router.get('/', (req, res) => {
-  res.redirect('/home')
+  res.redirect('/home');
 })
 
 router.get('/home', (req, res) => {
-  res.render('home')
+  models.Group.findAll({})
+  .then(function(groupData){
+    res.render('home', {groupData: groupData});
+  })
 })
 
 module.exports = router;

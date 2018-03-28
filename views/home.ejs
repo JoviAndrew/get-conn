@@ -15,7 +15,7 @@
     </div>
 
     <div class="button">
-      <button type="button" name="button">Create Group</button>
+      <a href="/home/create-group">Create Group</a>
       <button type="button" name="button">Join Group</button>
     </div><br>
 
@@ -30,22 +30,16 @@
           </tr>
         </thead>
         <tbody>
+          <%for(let index=0; index<groupData.length; index++){%>
           <tr>
-            <td>1</td>
-            <td>Lorem Group</td>
-            <td>Lorem ipsum dolor sit amet bacon ipsum amet si dolor bacon sit lorem ipsum</td>
+            <td><%=groupData[index].id%></td>
+            <td><%=groupData[index].groupName%></td>
+            <td><%=groupData[index].groupDesc%></td>
             <td>
-              <a href="#">Open Group</a>
+              <a href="/home/group/<%=groupData[index].id%>">Open Group</a>
             </td>
           </tr>
-          <tr>
-            <td>2</td>
-            <td>Lorem Group 2</td>
-            <td>Lorem ipsum dolor sit amet bacon ipsum amet si dolor bacon sit lorem ipsum</td>
-            <td>
-              <a href="#">Open Group</a>
-            </td>
-          </tr>
+          <%}%>
         </tbody>
       </table>
     </div>
