@@ -12,13 +12,13 @@
 <body>
     <h1>CREATE GROUP!</h1>
     
-    <form action="/action_page.php">
+    <form action="/home/create-group" method="POST">
         Group name: <input type="text" name="groupname">
         <br>
         Group Picture: <input type="file" name="pic" accept="image/*">
         <br>
         Group description:<br>
-        <textarea rows="4" cols="50" maxlength="254"></textarea>
+        <textarea name="desc" rows="4" cols="50" maxlength="254"></textarea>
         <br>
         <input type="submit", value="Create Group">
     </form>

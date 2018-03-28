@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <title>Home</title>
+  </head>
+  <body>
+    <div class="profile">
+      <img src="null">
+      <br>
+      <button type="button" name="button">Edit Profile</button>
+    </div>
+
+    <div class="welcome">
+      <h1>Hello Mr./Mrs. User!</h1>
+      <h3>What are you up to today?</h3>
+    </div>
+
+    <div class="button">
+      <a href="/home/create-group">Create Group</a>
+      <button type="button" name="button">Join Group</button>
+    </div><br>
+
+    <div class="list-joined-group">
+      <table border='1'>
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Group Name</th>
+            <th>Group Description</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%for(let index=0; index<groupData.length; index++){%>
+          <tr>
+            <td><%=groupData[index].id%></td>
+            <td><%=groupData[index].groupName%></td>
+            <td><%=groupData[index].groupDesc%></td>
+            <td>
+              <a href="/home/group/<%=groupData[index].id%>">Open Group</a>
+            </td>
+          </tr>
+          <%}%>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

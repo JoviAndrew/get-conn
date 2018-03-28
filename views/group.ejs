@@ -2,6 +2,11 @@
 <html>
 <head>
     <title><%= groupData.name%></title>
+    <style>
+        textarea{
+            resize: none
+        }
+    </style>
 </head>
 <body>
     <h1><%= groupData.name%></h1>
@@ -10,9 +15,10 @@
     <br>
     <h5><%= groupData.groupDesc%></h5>
     <div>
-        <form action="/group/<%groupData%>" method="POST">
+        <form action="/home/group/<%groupData.id%>/add-post" method="POST">
             New Post:<br>
-            <textarea rows="500" cols="100"></textarea>
+            <textarea rows="10" cols="170"></textarea>
+            <br>
             <input type="submit", value="Add Post">
         </form>
     </div>
@@ -24,8 +30,6 @@
             <%for(let index=0; index<groupData.length; index++){%>
                 <tr>
                     <td><%= groupData[index].Post.content%></td>
-                    <%for(let indexPost=0; groupData[index].Post)%>
-                    <td><a href="/groups/<%groupData[index].id%>/posts/<%groupData[index].Post.id%>/comment">Add Comment</a><td>
                 </tr>
             <%}%>
         </table>

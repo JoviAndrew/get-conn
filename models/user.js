@@ -9,7 +9,19 @@ module.exports = (sequelize, DataTypes) => {
     gender: DataTypes.STRING,
     birth_date: DataTypes.DATE,
     profilePicture: DataTypes.STRING
-  }, {});
+  }, {
+    hooks:{
+      beforeCreate: function(user, options){
+        var bcrypt = require('bcrypt');
+        const saltRounds = 10;
+        
+        var salt = bcrypt.genSaltSync(saltRounds);
+        let hash = bcrypt.hashSync(user.password, salt)
+        user.salt = salt
+        user.password = hash;
+      }
+    }
+  });
   User.associate = function(models) {
     // associations can be defined here
     User.hasMany(models.UserGroup);
