@@ -15,9 +15,19 @@ router.get('/', (req, res) => {
 })
 
 router.get('/home', (req, res) => {
+  models.User.findAll({
+    include: [{
+      model: models.Group
+    }],
+    where: {email: req.session.user.email}
+  })
+  .then(function(UserGroupData){
+    res.render('home', {UserGroupData: UserGroupData});
+  })
+  
   models.Group.findAll({})
   .then(function(groupData){
-    res.render('home', {groupData: groupData});
+    
   })
 })
 
