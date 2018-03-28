@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const model = require('./models');
+
 
 let app = express();
 app.set('view engine', 'ejs');
@@ -18,14 +18,11 @@ app.use('/register', routeRegister);
 //home page
 
 var routeHome = require('./routes/home.js');
-app.use('/home', routeHome);
-app.get('/home', function(req, res){
-    res.render('home')
-})
+app.use('/', routeHome);
 
 //create group
-app.get('/home/createGroup', function(req, res){
-    res.render('home')
+app.get('/createGroup', function(req, res){
+    res.render('createGroup')
 })
 
 //group page

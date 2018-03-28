@@ -12,6 +12,10 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   User.associate = function(models) {
     // associations can be defined here
+    User.hasMany(models.UserGroup);
+    User.belongsToMany(models.Group, {
+      through: models.UserGroup
+    })
   };
   return User;
 };

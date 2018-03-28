@@ -8,6 +8,10 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Group.associate = function(models) {
     // associations can be defined here
+    Group.hasMany(models.UserGroup);
+    Group.belongsToMany(models.User, {
+      through: models.UserGroup
+    })
   };
   return Group;
 };
