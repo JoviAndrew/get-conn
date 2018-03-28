@@ -43,6 +43,12 @@ var routeCreateGroup = require('./routes/createGroup.js');
 app.use('/home/create-group', routeCreateGroup);
 
 //==========
+//Join Group
+//==========
+var routeJoinGroup = require('./routes/joinGroup.js');
+app.use('/home/join-group', routeJoinGroup);
+
+//==========
 //Group
 //==========
 var routeGroup = require('./routes/group.js')
