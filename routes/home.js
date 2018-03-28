@@ -3,7 +3,7 @@ const models  = require('../models');
 
 // Session Check
 router.use(function (req, res, next) {
-  console.log('==============', req.session.user);
+  // console.log(req.session.user);
   if(req.session.user) {
     next();
   } else {

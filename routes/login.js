@@ -10,7 +10,7 @@ router.get('/', function(req, res){
 router.get('/tes', (req, res) => {
   let userTest = {
     email: 'test',
-    password: 'test2',
+    password: 'test',
   }
 
   models.User.findOne({
