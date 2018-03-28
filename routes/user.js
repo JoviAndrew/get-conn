@@ -35,6 +35,7 @@ router.post('/edit-profile', (req, res) => {
     lastname: req.body.lastname,
     email: req.body.email,
     gender: req.body.gender,
+    profilePic: req.body.profilePic
   }
 
   models.User.update(newData, {

@@ -5,7 +5,6 @@ const getFullName = require('../helpers/getFullName.js');
 
 // session Check
 router.use(function (req, res, next) {
-  // console.log(req.session.user);
   if(req.session.user) {
     next();
   } else {
@@ -15,7 +14,7 @@ router.use(function (req, res, next) {
 
 // if url is '/', it's automatically redirects to home
 router.get('/', (req, res) => {
-  res.redirect('/home')
+  res.redirect('/home');
 })
 
 router.get('/home', (req, res) => {
@@ -24,7 +23,10 @@ router.get('/home', (req, res) => {
 
   models.User.findById(id)
   .then(user => {
-    res.render('home', {user: user})
+    models.Group.findAll({})
+    .then(function(groupData){
+      res.render('home', {user: user, groupData: groupData});
+    })
   })
   .catch(err => {
     console.log(err.message);
