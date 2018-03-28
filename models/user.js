@@ -17,5 +17,6 @@ module.exports = (sequelize, DataTypes) => {
       through: models.UserGroup
     })
   };
+
   return User;
 };

@@ -6,11 +6,11 @@
     <div class="profile">
       <img src="null">
       <br>
-      <button type="button" name="button">Edit Profile</button>
+      <a href="/user/edit-profile">Edit Profile</a>
     </div>
 
     <div class="welcome">
-      <h1>Hello Mr./Mrs. User!</h1>
+      <h1>Hello <%= getFullName(user.firstname, user.lastname, user.gender) %>!</h1>
       <h3>What are you up to today?</h3>
     </div>
 
