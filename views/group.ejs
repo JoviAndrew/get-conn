@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= groupData.name%></title>
+</head>
+<body>
+    <h1><%= groupData.name%></h1>
+    <br>
+    <img src="<%groupData.groupPicture%>">
+    <br>
+    <h5><%= groupData.groupDesc%></h5>
+    <div>
+        <form action="/group/<%groupData%>" method="POST">
+            New Post:<br>
+            <textarea rows="500" cols="100"></textarea>
+            <input type="submit", value="Add Post">
+        </form>
+    </div>
+    <div>
+        <table>
+            <tr>
+               <th>Post:</th>
+            </tr>
+            <%for(let index=0; index<groupData.length; index++){%>
+                <tr>
+                    <td><%= groupData[index].Post.content%></td>
+                    <%for(let indexPost=0; groupData[index].Post)%>
+                    <td><a href="/groups/<%groupData[index].id%>/posts/<%groupData[index].Post.id%>/comment">Add Comment</a><td>
+                </tr>
+            <%}%>
+        </table>
+    </div>
+</body>
+</html>
