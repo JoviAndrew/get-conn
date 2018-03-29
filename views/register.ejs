@@ -1,32 +1,38 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>Register!</title>
+  <title>Register!</title>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 </head>
+
 <body>
-    <h1>REGISTER!</h1>
-    <form action="/register" method="POST">
+  <div class="container">
+    <h1>Register New Account</h1>
+    <div class="form-group">
+      <form action="/register" method="POST">
         First name:<br>
         <input type="text" name="firstname">
-        <br>
-        Last name:<br>
+        <br> Last name:<br>
         <input type="text" name="lastname">
+        <br> Email:
         <br>
-        Email:<br>
         <input type="text" name="email">
+        <br> Password:
         <br>
-        Password:<br>
         <input type="password" name="password">
+        <br> Gender:
         <br>
-        Gender:<br>
         <input type="radio" name="gender" value="Male"> Male
         <input type="radio" name="gender" value="Female"> Female<br>
+        <br> Birthday:
         <br>
-        Birthday:<br>
         <input type="date" name="birthday">
         <br><br>
         <input type="submit" value="Submit">
-    </form>
-
+      </form>
+    </div>
+  </div>
 </body>
+
 </html>

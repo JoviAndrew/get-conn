@@ -1,22 +1,33 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>Login</title>
+  <title>Login</title>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 </head>
+
 <body>
-    <div>
-        <h1>Get-Con</h1>
-    <div>
-    <form action="/login" method="POST">
-        Username:<br>
-        <input type="text" name="email">
-        <br>
-        Password:<br>
-        <input type="password" name="password">
-        <br><br>
-        <input type="submit" value="Login">
-        <br>
-        <a href="/register">SignUp!</a>
-    </form>    
+  <div class="container">
+    <div class="row">
+      <div class="Absolute-Center is-Responsive">
+        <div id="logo-container"></div>
+        <div class="col-sm-12 col-md-10 col-md-offset-1">
+          <form action="/login" method="POST" class="form-signin">
+            <h1 class="form-signin-heading" style="text-align: center">Get-Conn</h1> Email:
+            <br>
+            <input type="text" name="email" class="form-control" placeholder="Email">
+            <br> Password:
+            <br>
+            <input type="password" name="password" class="form-control" placeholder="Password">
+            <br><br>
+            <input type="submit" value="Login" class="btn btn-lg btn-primary btn-block">
+            <br>
+            <a href="/register" style="text-align: center">SignUp!</a>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
+
 </html>

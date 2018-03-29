@@ -4,6 +4,7 @@
   <title>
     <%= groupData.groupName %>
   </title>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
   <style>
     textarea {
       resize: none
@@ -12,59 +13,61 @@
 </head>
 
 <body>
-  <h1><%= groupData.groupName %></h1>
-  <a href="/home">Home</a>
-  <img src="../img/<%=groupData.groupPicture%>">
-  <br>
+  <div class="container">
+    <a href="/home">Home</a>
+    <h1 style="text-align: center"><%= groupData.groupName %></h1>
+    <img src="../img/<%=groupData.groupPicture%>" align="center">
+    <br>
 
-  <div class="desc">
-    -------------------------------------------------------------------------
-    <p><b>Group Description:</b><br> <%= groupData.groupDesc %></p>
-    -------------------------------------------------------------------------
-  </div>
+    <div class="desc" align="center">
+      -------------------------------------------------------------------------
+      <p><b>Group Description:</b><br> <%= groupData.groupDesc %></p>
+      -------------------------------------------------------------------------
+    </div>
 
-  <div class="form">
-    <form action="/home/group/<%=groupData.id%>/add-post" method="POST">
-      <h2>Post New Topics:</h2>
-      <textarea name="post" rows="5" cols="100"></textarea>
-      <br>
-      <input type="submit" value="Add Post">
-    </form>
-  </div><br>
+    <div class="form" align="center">
+      <form action="/home/group/<%=groupData.id%>/add-post" method="POST">
+        <h2>Post New Topics:</h2>
+        <textarea name="post" rows="5" cols="100"></textarea>
+        <br><br>
+        <input type="submit" value="Add Post" class="btn btn-primary btn-sm">
+      </form>
+    </div><br>
 
-  <div class="table">
-    <h2>Group Posts</h2>
-    <table border="0">
-      <% posts.forEach(post => { %>
-        <tr>
-          <td colspan="5">
-            <h4>Topic: <%= post.content %></h4>
-            Date Posted: <%= post.getPostedDate() %><br>
-            Poster: <%= post.User.firstname %><br>
-          </td>
-        </tr>
-
-        <% post.Comments.forEach(comment => { %>
+    <div class="table" align="center">
+      <h2>Group Posts</h2>
+      <table border="0">
+        <% posts.forEach(post => { %>
           <tr>
-            <td>>></td>
-            <td colspan="2">Comment by <%= comment.User.firstname %>:</td>
-            <td><%= comment.content %></td>
+            <td colspan="5">
+              <h4>Topic: <%= post.content %></h4>
+              Date Posted: <%= post.getPostedDate() %><br>
+              Poster: <%= post.User.firstname %><br>
+            </td>
           </tr>
-        <% }) %>
 
-        <tr>
-          <td></td>
-          <td colspan="3">
-            Reply:
-            <form action="/home/group/<%=groupData.id%>/post/<%=post.id%>/add-comment" method="post">
-              <textarea name="comment" rows="3" cols="50"></textarea>
-              <br>
-              <input type="submit" value="Comment">
-            </form>
-          </td>
-        </tr>
-      <% }) %>
-    </table>
+          <% post.Comments.forEach(comment => { %>
+            <tr>
+              <td>>></td>
+              <td colspan="2">Comment by <%= comment.User.firstname %>:</td>
+              <td><%= comment.content %></td>
+            </tr>
+            <% }) %>
+
+            <tr>
+              <td></td>
+              <td colspan="3">
+                Reply:
+                <form action="/home/group/<%=groupData.id%>/post/<%=post.id%>/add-comment" method="post">
+                  <textarea name="comment" rows="3" cols="50"></textarea>
+                  <br>
+                  <input type="submit" value="Comment">
+                </form>
+              </td>
+            </tr>
+            <% }) %>
+          </table>
+        </div>
   </div>
 
 </body>

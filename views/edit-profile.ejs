@@ -1,27 +1,32 @@
 <html>
   <head>
     <title>Edit Profile</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
   </head>
   <body>
-    <h1>Edit Profile</h1>
-    <form action="/user/edit-profile" method="POST">
-      First name:<br>
-      <input type="text" name="firstname" value="<%= user.firstname %>">
-      <br>
-      Last name:<br>
-      <input type="text" name="lastname" value="<%= user.lastname %>">
-      <br>
-      Email:<br>
-      <input type="text" name="email" value="<%= user.email %>">
-      <br>
-      Gender:<br>
-      <input type="radio" name="gender" value="Male" checked> Male
-      <input type="radio" name="gender" value="Female"> Female<br>
-      <br>
-      Profile Picture:<br>
-      <input type="file" name="profilePic" accept="image/*"><br>
-      <br><br>
-      <input type="submit" value="Submit">
-    </form>
-  </body>
+    <div class="container">
+      <h1>Edit Profile</h1>
+      <div class="form-group">
+        <form action="/user/edit-profile" method="POST">
+          First name:<br>
+          <input type="text" name="firstname" value="<%= user.firstname %>">
+          <br>
+          Last name:<br>
+          <input type="text" name="lastname" value="<%= user.lastname %>">
+          <br>
+          Email:<br>
+          <input type="text" name="email" value="<%= user.email %>">
+          <br>
+          Gender:<br>
+          <input type="radio" name="gender" value="Male" checked> Male
+          <input type="radio" name="gender" value="Female"> Female<br>
+          <br>
+          Profile Picture:<br>
+          <input type="file" name="profilePic" accept="image/*"><br>
+          <br><br>
+          <input type="submit" value="Submit">
+        </form>
+      </div>
+    </body>
+    </div>
 </html>

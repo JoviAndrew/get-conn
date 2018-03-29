@@ -1,50 +1,57 @@
 <html>
   <head>
     <title>Home</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   </head>
   <body>
-    <div class="profile">
-      <img src="null">
-      <a href="/user/edit-profile">Edit Profile</a> |
-      <a href="/logout">Logout</a>
+    <div class="container">
+      <div class="profile">
+        <img src="null">
+        <a href="/user/edit-profile">Edit Profile</a> |
+        <a href="/logout">Logout</a>
+      </div>
+
+      <div class="center">
+        <h1>Hello <%= getFullName(
+          UserGroupData[0].firstname,
+          UserGroupData[0].lastname,
+          UserGroupData[0].gender) %>!</h1>
+        <h3><small>What are you up to today?</small></h3>
+      </div>
+
+      <div class="button">
+        <a href="/home/create-group" class="btn btn-success">
+          <span class="glyphicon glyphicon-envelope"></span> Create Group</a>
+        <a href="/home/join-group" class="btn btn-warning">
+          <span class="glyphicon glyphicon-search"></span> Join Group</a>
+      </div><br>
+
+      <div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Group Name</th>
+              <th>Group Description</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <%for(let index=0; index<UserGroupData[0].Groups.length; index++){%>
+            <tr>
+              <td><%=UserGroupData[0].Groups[index].id%></td>
+              <td><%=UserGroupData[0].Groups[index].groupName%></td>
+              <td><%=UserGroupData[0].Groups[index].groupDesc%></td>
+              <td>
+                <a href="/home/group/<%=UserGroupData[0].Groups[index].id%>" class="btn btn-primary btn-sm">Open</a>
+                <a href="/home/group/leave/<%=UserGroupData[0].Groups[index].id%>" class="btn btn-danger btn-sm">Leave</a>
+              </td>
+            </tr>
+            <%}%>
+          </tbody>
+        </table>
+      </div>
     </div>
 
-    <div class="welcome">
-      <h1>Hello <%= getFullName(
-        UserGroupData[0].firstname,
-        UserGroupData[0].lastname,
-        UserGroupData[0].gender) %>!</h1>
-      <h3>What are you up to today?</h3>
-    </div>
-
-    <div class="button">
-      <a href="/home/create-group">Create Group</a>
-      <a href="/home/join-group">Join Group</a>
-    </div><br>
-
-    <div class="list-joined-group">
-      <table border='1'>
-        <thead>
-          <tr>
-            <th>Id</th>
-            <th>Group Name</th>
-            <th>Group Description</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <%for(let index=0; index<UserGroupData[0].Groups.length; index++){%>
-          <tr>
-            <td><%=UserGroupData[0].Groups[index].id%></td>
-            <td><%=UserGroupData[0].Groups[index].groupName%></td>
-            <td><%=UserGroupData[0].Groups[index].groupDesc%></td>
-            <td>
-              <a href="/home/group/<%=UserGroupData[0].Groups[index].id%>">Open Group</a>||<a href="/home/group/leave/<%=UserGroupData[0].Groups[index].id%>">Leave Group</a>
-            </td>
-          </tr>
-          <%}%>
-        </tbody>
-      </table>
-    </div>
   </body>
 </html>
