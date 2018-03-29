@@ -5,6 +5,7 @@
 </head>
 <body>
     <h1>REGISTER!</h1>
+    <h6 style="color: red"><%=err.message%></h6>
     <form action="/register" method="POST">
         First name:<br>
         <input type="text" name="firstname">
@@ -26,6 +27,7 @@
         <input type="date" name="birthday">
         <br><br>
         <input type="submit" value="Submit">
+        <a href="/login">Back</a>
     </form>
 
 </body>

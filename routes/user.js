@@ -5,7 +5,6 @@ const getFullName = require('../helpers/getFullName.js');
 
 // session Check
 router.use(function (req, res, next) {
-  // console.log(req.session.user);
   if(req.session.user) {
     next();
   } else {
@@ -19,9 +18,10 @@ router.get('/', (req, res) => {
 
 router.get('/edit-profile', (req, res) => {
   let id = req.session.user.id;
+  let message = '';
   models.User.findById(id)
   .then(user => {
-    res.render('edit-profile', {user: user})
+    res.render('edit-profile', {user: user, err: message})
   })
   .catch(err => {
     console.log(err.message);
@@ -45,7 +45,7 @@ router.post('/edit-profile', (req, res) => {
     res.redirect('/');
   })
   .catch(err => {
-    res.render('edit-profile', {student: req.body, err: err.message});
+    res.render('edit-profile', {student: req.body, err: err});
   })
 })
 
