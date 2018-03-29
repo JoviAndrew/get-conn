@@ -13,15 +13,20 @@
 </head>
 
 <body>
-  <h1><%= groupData.groupName %></h1>
-  <a href="/home">Home</a>
-  <img src="<%=groupData.groupPicture%>">
-  <br>
+  <div class="container">
+    <a href="/home">Home</a>
+    <div class="" align="center">
+      <img src="<%=groupData.groupPicture%>" class="img-thumbnail" style="width: 10%">
+      <h1><%= groupData.groupName %></h1>
+      <a href="#" class="btn btn-warning btn-sm">Edit Group</a>
+    </div>
 
     <div class="desc" align="center">
-      -------------------------------------------------------------------------
-      <p><b>Group Description:</b><br> <%= groupData.groupDesc %></p>
-      -------------------------------------------------------------------------
+      <hr style="width: 100%; background-color:grey;">
+      <p><b>Group Description:</b><br>
+        <%= groupData.groupDesc %>
+      </p>
+      <hr style="width: 100%; background-color:grey;">
     </div>
 
     <div class="form" align="center">
@@ -38,35 +43,38 @@
       <table border="0">
         <% posts.forEach(post => { %>
           <tr>
-            <td colspan="5">
+            <td>
               <h4>Topic: <%= post.content %></h4>
-              Date Posted: <%= post.getPostedDate() %><br>
-              Poster: <%= post.User.firstname %><br>
+                Date Posted: <%= post.getPostedDate() %><br>
+                Poster: <%= post.User.firstname %><br>
             </td>
           </tr>
 
           <% post.Comments.forEach(comment => { %>
             <tr>
-              <td>>></td>
-              <td colspan="2">Comment by <%= comment.User.firstname %>:</td>
-              <td><%= comment.content %></td>
+              <td>
+                <%= comment.User.firstname %>:
+                <%= comment.content %>
+              </td>
             </tr>
-            <% }) %>
-
+          <% }) %>
             <tr>
-              <td></td>
-              <td colspan="3">
+              <td>
                 Reply:
                 <form action="/home/group/<%=groupData.id%>/post/<%=post.id%>/add-comment" method="post">
                   <textarea name="comment" rows="3" cols="50"></textarea>
-                  <br>
-                  <input type="submit" value="Comment">
+                  <br><br>
+                  <div align="right">
+                    <input type="submit" value="Comment" class="btn btn-primary btn-sm">
+                  </div>
                 </form>
+                <hr style="width: 100%; color: black; height: 1px; background-color:grey;">
               </td>
             </tr>
-            <% }) %>
-          </table>
-        </div>
+          <% }) %>
+      </table>
+    </div>
+  </div>
   </div>
 
 </body>
