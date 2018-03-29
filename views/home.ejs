@@ -5,12 +5,15 @@
   <body>
     <div class="profile">
       <img src="null">
-      <br>
-      <button type="button" name="button">Edit Profile</button>
+      <a href="/user/edit-profile">Edit Profile</a> |
+      <a href="/logout">Logout</a>
     </div>
 
     <div class="welcome">
-      <h1>Hello Mr./Mrs. User!</h1>
+      <h1>Hello <%= getFullName(
+        UserGroupData[0].firstname,
+        UserGroupData[0].lastname,
+        UserGroupData[0].gender) %>!</h1>
       <h3>What are you up to today?</h3>
     </div>
 
@@ -36,7 +39,7 @@
             <td><%=UserGroupData[0].Groups[index].groupName%></td>
             <td><%=UserGroupData[0].Groups[index].groupDesc%></td>
             <td>
-              <a href="/home/group/<%=UserGroupData[0].Groups[index].id%>">Open Group</a>
+              <a href="/home/group/<%=UserGroupData[0].Groups[index].id%>">Open Group</a>||<a href="/home/group/leave/<%=UserGroupData[0].Groups[index].id%>">Leave Group</a>
             </td>
           </tr>
           <%}%>

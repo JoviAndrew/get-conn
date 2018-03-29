@@ -6,6 +6,7 @@
 
 </head>
 <body>
+  <h1>JOIN GROUP!</h1>
     <div class="list-joined-group">
         <table border='1'>
           <thead>
@@ -17,18 +18,19 @@
             </tr>
           </thead>
           <tbody>
-            <%for(let index=0; index<groupData[0].length; index++){%>
+            <%for(let index=0; index<groupData.length; index++){%>
             <tr>
               <td><%=groupData[index].id%></td>
               <td><%=groupData[index].groupName%></td>
               <td><%=groupData[index].groupDesc%></td>
               <td>
-                <a href="/home/join-group/<%=UserGroupData[0].Groups[index].id%>">Join Group</a>
+                <a href="/home/join-group/<%=groupData[index].id%>">Join Group</a>
               </td>
             </tr>
             <%}%>
           </tbody>
         </table>
       </div>
+      <a href="/home">Back</a>
 </body>
 </html>

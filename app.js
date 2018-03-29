@@ -1,7 +1,7 @@
-const app         = require('express')();
+const express     = require('express');
+const app         = express();
 const session     = require('express-session')
 const bodyParser  = require('body-parser');
-
 
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended:false}));
@@ -11,12 +11,17 @@ app.use(session({
     saveUnitialized: true
 }))
 
-
 //==========
 //Login
 //==========
 var routeLogin = require('./routes/login.js');
 app.use('/login', routeLogin);
+
+//==========
+//Logout
+//==========
+var routeLogout = require('./routes/logout.js');
+app.use('/logout', routeLogout);
 
 //==========
 //Register

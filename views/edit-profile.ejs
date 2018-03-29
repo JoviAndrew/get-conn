@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <title>Edit Profile</title>
+  </head>
+  <body>
+    <h1>Edit Profile</h1>
+    <form action="/user/edit-profile" method="POST">
+      First name:<br>
+      <input type="text" name="firstname" value="<%= user.firstname %>">
+      <br>
+      Last name:<br>
+      <input type="text" name="lastname" value="<%= user.lastname %>">
+      <br>
+      Email:<br>
+      <input type="text" name="email" value="<%= user.email %>">
+      <br>
+      Gender:<br>
+      <input type="radio" name="gender" value="Male" checked> Male
+      <input type="radio" name="gender" value="Female"> Female<br>
+      <br>
+      Profile Picture:<br>
+      <input type="file" name="profilePic" accept="image/*"><br>
+      <br><br>
+      <input type="submit" value="Submit">
+    </form>
+  </body>
+</html>

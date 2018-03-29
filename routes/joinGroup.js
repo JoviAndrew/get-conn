@@ -18,4 +18,8 @@ router.get('/:id', function(req,res){
     })
 })
 
+router.get('/home', function(req,res){
+    res.redirect('/home');
+})
+
 module.exports = router;
