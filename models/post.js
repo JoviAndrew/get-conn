@@ -12,6 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     Post.hasMany(models.Comment);
   };
 
+  //INSTANCE METHOD For getting post time
   Post.prototype.getPostedDate = function (callback) {
     let day = this.createdAt.getDate();
     let month = this.createdAt.getMonth();
@@ -20,6 +21,7 @@ module.exports = (sequelize, DataTypes) => {
     return `${day}/${month}/${year}`
   }
 
+  //CLASS METHOD
   Post.getAllPost = function (user, comment, id, callback) {
     this.findAll({
       where: {GroupId: id},

@@ -3,6 +3,8 @@ const models = require('../models');
 // helpers
 const getFullName = require('../helpers/getFullName.js');
 
+router.use(require('express').static("picture"));
+
 // session Check
 router.use(function (req, res, next) {
   if(req.session.user) {
