@@ -1,7 +1,9 @@
 const router = require('express').Router();
-const models  = require('../models');
+const models = require('../models');
 // helpers
 const getFullName = require('../helpers/getFullName.js');
+
+router.use(require('express').static("picture"));
 
 // session Check
 router.use(function (req, res, next) {
@@ -29,6 +31,7 @@ router.get('/home', (req, res) => {
   })
   .then(function(UserGroupData){
     res.render('home', {UserGroupData: UserGroupData});
+    console.log('Picture: ===================', UserGroupData[0].profilePicture);
   })
 })
 
