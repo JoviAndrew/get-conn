@@ -25,6 +25,15 @@ router.get('/:id', function(req, res) {
   })
 })
 
+router.get('/leave/:id', function(req, res){
+  models.UserGroup.destroy({
+    where: {UserId: req.session.user.id, GroupId: req.params.id}
+  })
+  .then(function(){
+    res.redirect('/home');
+  })
+})
+
 router.post('/:id/add-post', function(req, res) {
   let id = req.session.user.id;
 
@@ -55,6 +64,10 @@ router.post('/:idGroup/post/:idPost/add-comment', (req, res) => {
   .catch(err => {
     console.log(err.message);
   })
+})
+
+router.get('/home', function(req, res){
+  res.redirect('/home');
 })
 
 module.exports = router;

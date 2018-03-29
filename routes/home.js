@@ -30,11 +30,6 @@ router.get('/home', (req, res) => {
   .then(function(UserGroupData){
     res.render('home', {UserGroupData: UserGroupData});
   })
-
-  models.Group.findAll({})
-  .then(function(groupData){
-
-  })
 })
 
 module.exports = router;

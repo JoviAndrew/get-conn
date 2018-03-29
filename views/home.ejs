@@ -18,8 +18,8 @@
     </div>
 
     <div class="button">
-      <a href="/home/create-group">Create Group</a> |
-      <a href="#">Join Group</a>
+      <a href="/home/create-group">Create Group</a>
+      <a href="/home/join-group">Join Group</a>
     </div><br>
 
     <div class="list-joined-group">
@@ -39,7 +39,7 @@
             <td><%=UserGroupData[0].Groups[index].groupName%></td>
             <td><%=UserGroupData[0].Groups[index].groupDesc%></td>
             <td>
-              <a href="/home/group/<%=UserGroupData[0].Groups[index].id%>">Open Group</a>
+              <a href="/home/group/<%=UserGroupData[0].Groups[index].id%>">Open Group</a>||<a href="/home/group/leave/<%=UserGroupData[0].Groups[index].id%>">Leave Group</a>
             </td>
           </tr>
           <%}%>
