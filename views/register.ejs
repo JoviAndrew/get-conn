@@ -9,6 +9,7 @@
 <body>
   <div class="container">
     <h1>Register New Account</h1>
+    <h6 style="color: red"><%=err.message%></h6>
     <div class="form-group">
       <form action="/register" method="POST">
         First name:<br>
@@ -30,6 +31,7 @@
         <input type="date" name="birthday">
         <br><br>
         <input type="submit" value="Submit">
+        <a href="/login">Back</a>
       </form>
     </div>
   </div>
