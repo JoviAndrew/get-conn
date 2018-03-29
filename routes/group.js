@@ -34,7 +34,7 @@ router.post('/:id/add-post', function(req, res) {
     content: req.body.post
   })
   .then(success => {
-    res.redirect(`/`);
+    res.redirect(`/home/group/${req.params.id}`);
   })
   .catch(err => {
     console.log(err.message);
@@ -50,7 +50,7 @@ router.post('/:idGroup/post/:idPost/add-comment', (req, res) => {
     content: req.body.comment
   })
   .then(success => {
-    res.redirect('/');
+    res.redirect(`/home/group/${req.params.idGroup}`);
   })
   .catch(err => {
     console.log(err.message);
