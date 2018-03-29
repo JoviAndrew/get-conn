@@ -11,16 +11,5 @@ module.exports = (sequelize, DataTypes) => {
     Comment.belongsTo(models.User);
   };
 
-  Comment.getAllComment = function (user, PostId, callback) {
-    this.findAll({
-      where: {PostId: PostId},
-      include: [{model: user}]
-    })
-    .then(comments => {
-      console.log(comments);
-      callback(comments);
-    })
-  }
-
   return Comment;
 };

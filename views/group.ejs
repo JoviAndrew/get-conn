@@ -2,7 +2,7 @@
 
 <head>
   <title>
-    <%= groupData.name%>
+    <%= groupData.groupName %>
   </title>
   <style>
     textarea {
@@ -22,7 +22,6 @@
     -------------------------------------------------------------------------
   </div>
 
-
   <div class="form">
     <form action="/home/group/<%=groupData.id%>/add-post" method="POST">
       <h2>Post New Topics:</h2>
@@ -33,14 +32,15 @@
   </div><br>
 
   <div class="table">
-    <h3>Group Posts</h3>
+    <h2>Group Posts</h2>
     <table border="0">
       <% posts.forEach(post => { %>
         <tr>
-          <td colspan="4">Poster: <%= post.User.firstname %></td>
-        </tr>
-        <tr>
-          <td colspan="5">Topic: <b><%= post.content %></b></td>
+          <td colspan="5">
+            <h4>Topic: <%= post.content %></h4>
+            Date Posted: <%= post.getPostedDate() %><br>
+            Poster: <%= post.User.firstname %><br>
+          </td>
         </tr>
 
         <% post.Comments.forEach(comment => { %>
