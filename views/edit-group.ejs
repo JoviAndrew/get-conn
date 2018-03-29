@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <title>Edit Group</title>
+  <style>
+    textarea {
+      resize: none
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Edit Group!</h1>
+
+  <form action="/home/group/<%=groupData.id%>/edit-group" method="POST">
+    Group name: <input type="text" name="groupname" value="<%=groupData.groupName%>">
+    <br> Group Picture: <input type="file" name="pic" accept="image/*">
+    <br> Group description:<br>
+    <textarea name="desc" rows="4" cols="50" maxlength="254" value="<%=groupData.groupDesc%>"></textarea>
+    <br>
+    <input type="submit" , value="Edit Group">
+  </form>
+</body>
+
+</html>

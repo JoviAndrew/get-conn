@@ -31,7 +31,6 @@ router.get('/home', (req, res) => {
   })
   .then(function(UserGroupData){
     res.render('home', {UserGroupData: UserGroupData});
-    console.log('Picture: ===================', UserGroupData[0].profilePicture);
   })
 })
 
