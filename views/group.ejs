@@ -18,7 +18,10 @@
     <div class="" align="center">
       <img src="<%=groupData.groupPicture%>" class="img-thumbnail" style="width: 10%">
       <h1><%= groupData.groupName %></h1>
-      <a href="#" class="btn btn-warning btn-sm">Edit Group</a>
+      <!--If admin then show edit button  -->
+      <%if(groupData.adminId == user.id){%>
+        <a href="/home/group/<%=groupData.id%>/edit-group" class="btn btn-warning btn-sm">Edit Group</a>
+      <%}%>
     </div>
 
     <div class="desc" align="center">

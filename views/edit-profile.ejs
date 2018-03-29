@@ -9,6 +9,7 @@
       <h1>Edit Profile</h1>
       <h6 style="color: red"><%=err.message%></h6>
       <div class="form-group">
+        <h6 style="color: red"><%=err.message%></h6>
         <form action="/user/edit-profile" method="POST">
           First name:<br>
           <input type="text" name="firstname" value="<%= user.firstname %>">
