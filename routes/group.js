@@ -21,7 +21,8 @@ router.get('/:id', function(req, res) {
     models.Post.getAllPost(models.User, models.Comment, req.params.id, posts => {
       res.render('group', {
         groupData: groupData,
-        posts: posts
+        posts: posts, 
+        user: req.session.user
       })
     })
   })
@@ -70,6 +71,32 @@ router.post('/:idGroup/post/:idPost/add-comment', (req, res) => {
 
 router.get('/home', function(req, res){
   res.redirect('/home');
+})
+
+router.get('/:idGroup/edit-group', function(req, res){
+  models.Group.findById(req.params.idGroup)
+  .then(function(groupData){
+    res.render('edit-group', {groupData: groupData});
+  })
+})
+
+router.post('/:idGroup/edit-group', function(req, res){
+  console.log(req.params.idGroup);
+  models.Group.update({
+    groupName: req.body.groupname,
+    groupPicture: req.body.pic,
+    groupDesc: req.body.desc,
+  },{
+    where: {
+      id: req.params.idGroup
+    }
+  })
+  .then(function(groupData){
+    res.redirect(`/home/group/${req.params.idGroup}`);
+  })
+  .catch(function(err){
+    console.log(err);
+  })
 })
 
 module.exports = router;

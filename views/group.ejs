@@ -14,6 +14,12 @@
 <body>
   <h1><%= groupData.groupName %></h1>
   <a href="/home">Home</a>
+
+  <!--If admin then show edit button  -->
+  <%if(groupData.adminId == user.id){%>
+    <a href="/home/group/<%=groupData.id%>/edit-group">Edit Group</a>
+  <%}%>
+  
   <img src="<%=groupData.groupPicture%>">
   <br>
 

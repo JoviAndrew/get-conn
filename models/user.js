@@ -9,20 +9,24 @@ module.exports = (sequelize, DataTypes) => {
           msg: 'email format is incorrect'
         },
         isUnique(value, callback){
+          console.log("========================================",this.User.id);
           let where = {email:value};
           if(this.id != null){
-            where = {email:value, id:{$ne: this.id}}
+            where = {
+              email:value, 
+              id:{$ne: this.id}
+            }
           }
           User.findAll({where: where})
           .then(function(userData){
             if(userData.length != 0){
               callback('Email must be unique!');
-            } else{
-              callback()
             }
+              callback()
+            
           })
         }
-      },
+      }
     },
     password: DataTypes.STRING,
     salt: DataTypes.STRING,

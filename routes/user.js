@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const models  = require('../models');
+
 // helpers
 const getFullName = require('../helpers/getFullName.js');
 
@@ -29,7 +30,7 @@ router.get('/edit-profile', (req, res) => {
 })
 
 router.post('/edit-profile', (req, res) => {
-  let id = req.session.user.id;
+
   let newData = {
     firstname: req.body.firstname,
     lastname: req.body.lastname,
@@ -39,13 +40,13 @@ router.post('/edit-profile', (req, res) => {
   }
 
   models.User.update(newData, {
-    where: {id: id}
+    where: {id: req.session.user.id}
   })
   .then(success => {
     res.redirect('/');
   })
   .catch(err => {
-    res.render('edit-profile', {student: req.body, err: err});
+    res.render('edit-profile', {user: req.body, err: err});
   })
 })
 
