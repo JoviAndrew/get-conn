@@ -30,13 +30,13 @@
           </tr>
         </thead>
         <tbody>
-          <%for(let index=0; index<groupData.length; index++){%>
+          <%for(let index=0; index<UserGroupData[0].Groups.length; index++){%>
           <tr>
-            <td><%=groupData[index].id%></td>
-            <td><%=groupData[index].groupName%></td>
-            <td><%=groupData[index].groupDesc%></td>
+            <td><%=UserGroupData[0].Groups[index].id%></td>
+            <td><%=UserGroupData[0].Groups[index].groupName%></td>
+            <td><%=UserGroupData[0].Groups[index].groupDesc%></td>
             <td>
-              <a href="/home/group/<%=groupData[index].id%>">Open Group</a>
+              <a href="/home/group/<%=UserGroupData[0].Groups[index].id%>">Open Group</a>
             </td>
           </tr>
           <%}%>

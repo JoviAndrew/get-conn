@@ -5,12 +5,14 @@ module.exports = (sequelize, DataTypes) => {
     groupPicture: DataTypes.STRING,
     groupDesc: DataTypes.STRING,
     adminId: DataTypes.INTEGER
-  }, {});
+  }, {
+    
+  });
   Group.associate = function(models) {
     // associations can be defined here
     Group.hasMany(models.UserGroup);
     Group.belongsToMany(models.User, {
-      through: models.UserGroup
+      through: 'UserGroup'
     })
     Group.hasMany(models.Post);
   };

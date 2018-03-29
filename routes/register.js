@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
-var bcrypt = require('bcrypt');
-const saltRounds = 10;
+
 const model = require('../models');
 
 router.get('/', function(req, res){

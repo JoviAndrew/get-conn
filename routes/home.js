@@ -21,15 +21,28 @@ router.get('/home', (req, res) => {
   res.locals.getFullName = getFullName;
   let id = req.session.user.id;
 
-  models.User.findById(id)
-  .then(user => {
-    models.Group.findAll({})
-    .then(function(groupData){
-      res.render('home', {user: user, groupData: groupData});
-    })
+  // models.User.findById(id)
+  // .then(user => {
+  //   models.Group.findAll({})
+  //   .then(function(groupData){
+  //     res.render('home', {user: user, groupData: groupData});
+  //   })
+  // })
+  // .catch(err => {
+  //   console.log(err.message);
+  models.User.findAll({
+    include: [{
+      model: models.Group
+    }],
+    where: {email: req.session.user.email}
   })
-  .catch(err => {
-    console.log(err.message);
+  .then(function(UserGroupData){
+    res.render('home', {UserGroupData: UserGroupData});
+  })
+
+  models.Group.findAll({})
+  .then(function(groupData){
+
   })
 })
 
