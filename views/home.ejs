@@ -10,7 +10,10 @@
     </div>
 
     <div class="welcome">
-      <h1>Hello <%= getFullName(user.firstname, user.lastname, user.gender) %>!</h1>
+      <h1>Hello <%= getFullName(
+        UserGroupData[0].firstname,
+        UserGroupData[0].lastname,
+        UserGroupData[0].gender) %>!</h1>
       <h3>What are you up to today?</h3>
     </div>
 
