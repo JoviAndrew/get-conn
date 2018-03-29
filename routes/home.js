@@ -1,7 +1,9 @@
 const router = require('express').Router();
 const models  = require('../models');
+// helpers
+const getFullName = require('../helpers/getFullName.js');
 
-// Session Check
+// session Check
 router.use(function (req, res, next) {
   if(req.session.user) {
     next();
@@ -10,11 +12,15 @@ router.use(function (req, res, next) {
   }
 })
 
+// if url is '/', it's automatically redirects to home
 router.get('/', (req, res) => {
   res.redirect('/home');
 })
 
 router.get('/home', (req, res) => {
+  res.locals.getFullName = getFullName;
+  let id = req.session.user.id;
+
   models.User.findAll({
     include: [{
       model: models.Group
@@ -24,10 +30,10 @@ router.get('/home', (req, res) => {
   .then(function(UserGroupData){
     res.render('home', {UserGroupData: UserGroupData});
   })
-  
+
   models.Group.findAll({})
   .then(function(groupData){
-    
+
   })
 })
 

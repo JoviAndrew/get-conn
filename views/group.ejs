@@ -1,38 +1,71 @@
-<!DOCTYPE html>
 <html>
+
 <head>
-    <title><%= groupData.name%></title>
-    <style>
-        textarea{
-            resize: none
-        }
-    </style>
+  <title>
+    <%= groupData.name%>
+  </title>
+  <style>
+    textarea {
+      resize: none
+    }
+  </style>
 </head>
+
 <body>
-    <h1><%= groupData.name%></h1>
-    <br>
-    <img src="<%=groupData.groupPicture%>">
-    <br>
-    <h5><%= groupData.groupDesc%></h5>
-    <div>
-        <form action="/home/group/<%groupData.id%>/add-post" method="POST">
-            New Post:<br>
-            <textarea rows="10" cols="170"></textarea>
-            <br>
-            <input type="submit", value="Add Post">
-        </form>
-    </div>
-    <div>
-        <table>
-            <tr>
-               <th>Post:</th>
-            </tr>
-            <%for(let index=0; index<groupData.length; index++){%>
-                <tr>
-                    <td><%= groupData[index].Post.content%></td>
-                </tr>
-            <%}%>
-        </table>
-    </div>
+  <h1><%= groupData.groupName %></h1>
+  <img src="../img/<%=groupData.groupPicture%>">
+  <br>
+
+  <div class="desc">
+    -------------------------------------------------------------------------
+    <p><b>Group Description:</b><br> <%= groupData.groupDesc %></p>
+    -------------------------------------------------------------------------
+  </div>
+
+
+  <div class="form">
+    <form action="/home/group/<%=groupData.id%>/add-post" method="POST">
+      <h2>Post New Topics:</h2>
+      <textarea name="post" rows="5" cols="100"></textarea>
+      <br>
+      <input type="submit" value="Add Post">
+    </form>
+  </div><br>
+
+  <div class="table">
+    <h3>Group Posts</h3>
+    <table border="0">
+      <% posts.forEach(post => { %>
+        <tr>
+          <td colspan="4">Poster: <%= post.User.firstname %></td>
+        </tr>
+        <tr>
+          <td colspan="5">Topic: <b><%= post.content %></b></td>
+        </tr>
+
+        <% post.Comments.forEach(comment => { %>
+          <tr>
+            <td>>></td>
+            <td colspan="2">Comment by <%= comment.User.firstname %>:</td>
+            <td><%= comment.content %></td>
+          </tr>
+        <% }) %>
+
+        <tr>
+          <td></td>
+          <td colspan="3">
+            Reply:
+            <form action="/home/group/<%=groupData.id%>/post/<%=post.id%>/add-comment" method="post">
+              <textarea name="comment" rows="3" cols="50"></textarea>
+              <br>
+              <input type="submit" value="Comment">
+            </form>
+          </td>
+        </tr>
+      <% }) %>
+    </table>
+  </div>
+
 </body>
+
 </html>

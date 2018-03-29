@@ -1,4 +1,4 @@
-const model = require('../models');
+const models = require('../models');
 const express = require('express');
 const router = express.Router();
 var bcrypt = require('bcrypt');
@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
 
 router.post('/', function(req, res) {
   //find the data where the email is the same as the email being inputed
-  model.User.findOne({
+  models.User.findOne({
       where:{
           email: req.body.email
       }

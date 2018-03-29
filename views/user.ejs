@@ -1,0 +1,22 @@
+<html>
+  <head>
+    <title></title>
+  </head>
+  <body>
+    <h1>User Profile</h1>
+    <div class="profile-pic">
+      <img src="asoy">
+    </div>
+
+    <div class="profile">
+      Name: <%= getFullName(user.firstname, user.lastname, user.gender)%>
+      Email: <%= user.email %>
+      Gender: <%= user.gender %>
+      Birth Date: <%= user.birth_date %>
+    </div>
+
+    <div class="button">
+      <a href="/user/edit-profile">Edit Profile</a>
+    </div>
+  </body>
+</html>
