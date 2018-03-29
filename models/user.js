@@ -5,25 +5,23 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       validate: {
         isEmail: {
-          args: true,
-          msg: 'email format is incorrect'
+          args: false,
+          msg: 'email format is incorrect!'
         },
-        isUnique(value, callback){
-          console.log("========================================",this.User.id);
-          let where = {email:value};
-          if(this.id != null){
+        isUnique: function(value, msg) {
+          let where = {email: value}
+          if (this.id !== null) {
             where = {
-              email:value, 
-              id:{$ne: this.id}
+              email: value,
+              id: {$ne: this.id}
             }
           }
           User.findAll({where: where})
-          .then(function(userData){
-            if(userData.length != 0){
-              callback('Email must be unique!');
+          .then(results => {
+            if (results.length > 0) {
+              msg(new Error('email already taken!'));
             }
-              callback()
-            
+            msg();
           })
         }
       }
@@ -40,7 +38,7 @@ module.exports = (sequelize, DataTypes) => {
       beforeCreate: function(user, options){
         var bcrypt = require('bcrypt');
         const saltRounds = 10;
-        
+
         var salt = bcrypt.genSaltSync(saltRounds);
         let hash = bcrypt.hashSync(user.password, salt)
         user.salt = salt

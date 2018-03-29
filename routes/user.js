@@ -30,8 +30,8 @@ router.get('/edit-profile', (req, res) => {
 })
 
 router.post('/edit-profile', (req, res) => {
-
   let newData = {
+    id: req.session.user.id,
     firstname: req.body.firstname,
     lastname: req.body.lastname,
     email: req.body.email,

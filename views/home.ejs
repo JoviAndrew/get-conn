@@ -1,29 +1,35 @@
 <html>
-  <head>
-    <title>Home</title>
-  </head>
-  <body>
+
+<head>
+  <title>Home</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container">
+
+    <div>
+      <a href="/logout">Logout</a> |
+      <a href="/user/edit-profile">Edit Profile</a>
+    </div>
+
     <div class="profile" align="center">
-      <img src="<%=UserGroupData[0].profilePicture%>">
-      <a href="/user/edit-profile">Edit Profile</a> |
-      <a href="/logout">Logout</a>
-    </div>
-
-    <div class="welcome">
+      <img src="<%=UserGroupData[0].profilePicture%>" class="img-thumbnail" style="width: 10%">
       <h1>Hello <%= getFullName(
-        UserGroupData[0].firstname,
-        UserGroupData[0].lastname,
-        UserGroupData[0].gender) %>!</h1>
-      <h3>What are you up to today?</h3>
+          UserGroupData[0].firstname,
+          UserGroupData[0].lastname,
+          UserGroupData[0].gender) %>!</h1>
+      <h3><small>What are you up to today?</small></h3>
+      <div class="button">
+        <a href="/home/create-group" class="btn btn-success">
+          <span class=""></span> Create Group</a>
+          <a href="/home/join-group" class="btn btn-warning">
+            <span class="glyphicon glyphicon-search"></span> Join Group</a>
+          </div><br>
+          <div>
     </div>
 
-    <div class="button">
-      <a href="/home/create-group">Create Group</a>
-      <a href="/home/join-group">Join Group</a>
-    </div><br>
-
-    <div class="list-joined-group">
-      <table border='1'>
+      <table class="table">
         <thead>
           <tr>
             <th>Id</th>
@@ -34,17 +40,27 @@
         </thead>
         <tbody>
           <%for(let index=0; index<UserGroupData[0].Groups.length; index++){%>
-          <tr>
-            <td><%=UserGroupData[0].Groups[index].id%></td>
-            <td><%=UserGroupData[0].Groups[index].groupName%></td>
-            <td><%=UserGroupData[0].Groups[index].groupDesc%></td>
-            <td>
-              <a href="/home/group/<%=UserGroupData[0].Groups[index].id%>">Open Group</a>||<a href="/home/group/leave/<%=UserGroupData[0].Groups[index].id%>">Leave Group</a>
-            </td>
-          </tr>
-          <%}%>
+            <tr>
+              <td>
+                <%=UserGroupData[0].Groups[index].id%>
+              </td>
+              <td>
+                <%=UserGroupData[0].Groups[index].groupName%>
+              </td>
+              <td>
+                <%=UserGroupData[0].Groups[index].groupDesc%>
+              </td>
+              <td>
+                <a href="/home/group/<%=UserGroupData[0].Groups[index].id%>" class="btn btn-primary btn-sm">Open</a>
+                <a href="/home/group/leave/<%=UserGroupData[0].Groups[index].id%>" class="btn btn-danger btn-sm">Leave</a>
+              </td>
+            </tr>
+            <%}%>
         </tbody>
       </table>
     </div>
-  </body>
+  </div>
+
+</body>
+
 </html>

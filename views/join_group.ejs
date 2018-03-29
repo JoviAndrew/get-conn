@@ -1,36 +1,46 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-
-    <title>Join Group</title>
-
+  <title>Join Group</title>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 </head>
+
 <body>
-  <h1>JOIN GROUP!</h1>
-    <div class="list-joined-group">
-        <table border='1'>
-          <thead>
+  <div class="container">
+    <a href="/home">Home</a>
+    <h1>Join Group</h1>
+    <div class>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Group Name</th>
+            <th>Group Description</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%for(let index=0; index<groupData.length; index++){%>
             <tr>
-              <th>Id</th>
-              <th>Group Name</th>
-              <th>Group Description</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            <%for(let index=0; index<groupData.length; index++){%>
-            <tr>
-              <td><%=groupData[index].id%></td>
-              <td><%=groupData[index].groupName%></td>
-              <td><%=groupData[index].groupDesc%></td>
               <td>
-                <a href="/home/join-group/<%=groupData[index].id%>">Join Group</a>
+                <%=groupData[index].id%>
+              </td>
+              <td>
+                <%=groupData[index].groupName%>
+              </td>
+              <td>
+                <%=groupData[index].groupDesc%>
+              </td>
+              <td>
+                <a href="/home/join-group/<%=groupData[index].id%>" class="btn btn-warning btn-sm">Join Group</a>
               </td>
             </tr>
             <%}%>
           </tbody>
         </table>
       </div>
-      <a href="/home">Back</a>
+  </div>
 </body>
+
 </html>
